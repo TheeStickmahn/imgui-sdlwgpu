@@ -463,6 +463,15 @@ static void ImGui_ImplSDLGPU3_CreateShaders()
         fragment_shader_info.code = dxbc_fragment;
         fragment_shader_info.code_size = sizeof(dxbc_fragment);
     }
+    else if (strcmp(driver, "webgpu") == 0)
+    {
+        vertex_shader_info.format = SDL_GPU_SHADERFORMAT_WGSL;
+        vertex_shader_info.code = wgsl_vertex;
+        vertex_shader_info.code_size = sizeof(wgsl_vertex);
+        fragment_shader_info.format = SDL_GPU_SHADERFORMAT_WGSL;
+        fragment_shader_info.code = wgsl_fragment;
+        fragment_shader_info.code_size = sizeof(wgsl_fragment);
+    }
 #ifdef __APPLE__
     else
     {
